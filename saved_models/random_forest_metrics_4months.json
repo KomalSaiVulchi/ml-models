@@ -1,0 +1,22 @@
+{
+  "model": "Random Forest",
+  "training_date": "2026-02-04 22:43:00",
+  "dataset": "4 months (Oct 2025 - Feb 2026)",
+  "samples": 2784,
+  "features": 120,
+  "train_samples": 2227,
+  "test_samples": 557,
+  "train_rmse": 7.592524795785669,
+  "test_rmse": 22.54704268620665,
+  "train_mae": 2.6308312456506924,
+  "test_mae": 11.364947997598247,
+  "train_r2": 0.9964735419575251,
+  "test_r2": 0.9499455038809491,
+  "hyperparameters": {
+    "n_estimators": 300,
+    "max_depth": 25,
+    "min_samples_split": 4,
+    "min_samples_leaf": 2,
+    "max_features": "sqrt"
+  }
+}
