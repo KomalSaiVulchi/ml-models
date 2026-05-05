@@ -138,11 +138,16 @@ Aftbest_model.pkl` - XGBoost (production model) ⭐
 ### Load Best Model
 ```python
 import joblib
+# NOTE (deployment): The live backend launched by [run.sh](run.sh)
+# loads the per-pollutant model manifest from
+# `saved_models/pollutant_models/model_manifest.json` and uses the
+# 30 per-pollutant models (6 pollutants × 5 horizons) for forecasting.
+# The single-file `saved_models/best_model.pkl` is retained for the
+# legacy 4-month AQI benchmark scripts but is not used by the live API.
 
-# Load the best model
+# Example (legacy): load the single-AQI benchmark model (not used by the
+# deployed backend) and run predictions
 model = joblib.load('saved_models/best_model.pkl')
-
-# Make predictions
 predictions = model.predict(X_test)
 ```
 

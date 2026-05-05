@@ -1382,16 +1382,28 @@ def current_aqi():
         # PRIORITY 1: AQICN aggregated ground station data
         # FALLBACK: OWM satellite estimate (clearly labeled)
         if aqicn and aqicn.get('pollutants'):
-            ap = aqicn['pollutants']
-            pm25 = ap.get('pm25', {}).get('value', owm_pm25)
-            pm10 = ap.get('pm10', {}).get('value', owm_pm10)
-            no2 = ap.get('no2', {}).get('value', owm_no2)
-            so2 = ap.get('so2', {}).get('value', owm_so2)
-            co = ap.get('co', {}).get('value', owm_co)
-            o3 = ap.get('o3', {}).get('value', owm_o3)
-            data_source = 'aqicn_ground_station'
-            station_name = aqicn.get('station')
             station_distance_km = aqicn.get('station_distance_km')
+            # If nearest station is farther than 75km, force fallback
+            if station_distance_km is not None and station_distance_km > 75:
+                # FALLBACK: satellite estimate — apply correction for known underreporting
+                pm25 = owm_pm25 * SATELLITE_CORRECTION['pm25']
+                pm10 = owm_pm10 * SATELLITE_CORRECTION['pm10']
+                no2  = owm_no2  * SATELLITE_CORRECTION['no2']
+                so2  = owm_so2  * SATELLITE_CORRECTION['so2']
+                co   = owm_co   * SATELLITE_CORRECTION['co']
+                o3   = owm_o3   * SATELLITE_CORRECTION['o3']
+                data_source = 'satellite_estimate'
+                station_name = None
+            else:
+                ap = aqicn['pollutants']
+                pm25 = ap.get('pm25', {}).get('value', owm_pm25)
+                pm10 = ap.get('pm10', {}).get('value', owm_pm10)
+                no2 = ap.get('no2', {}).get('value', owm_no2)
+                so2 = ap.get('so2', {}).get('value', owm_so2)
+                co = ap.get('co', {}).get('value', owm_co)
+                o3 = ap.get('o3', {}).get('value', owm_o3)
+                data_source = 'aqicn_ground_station'
+                station_name = aqicn.get('station')
         else:
             # FALLBACK: satellite estimate — apply correction for known underreporting
             pm25 = owm_pm25 * SATELLITE_CORRECTION['pm25']
@@ -1401,6 +1413,7 @@ def current_aqi():
             co   = owm_co   * SATELLITE_CORRECTION['co']
             o3   = owm_o3   * SATELLITE_CORRECTION['o3']
             data_source = 'satellite_estimate'
+            station_name = None
 
         # Calculate AQI from the selected pollutant values
         aqi_indian, dominant_indian = calculate_indian_aqi_value(pm25, pm10, no2, so2, co, o3)
