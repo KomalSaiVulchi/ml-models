@@ -12,6 +12,20 @@ The current production flow uses 30 independently trained pollutant models acros
 - React frontend for live visualization, weather context, pollutant cards, and vulnerability guidance.
 - Model training scripts for XGBoost, LightGBM, Random Forest, and comparison workflows.
 
+## Visual Preview
+
+<p align="center">
+	<img src="frontend/public/cityscape.png" alt="AirPulse cityscape background" width="360" />
+	<img src="frontend/public/cloud_sun.png" alt="AirPulse weather background" width="360" />
+</p>
+
+<p align="center">
+	<img src="frontend/public/aqi_good_man.png" alt="AirPulse AQI good state" width="140" />
+	<img src="frontend/public/aqi_moderate_man.png" alt="AirPulse AQI moderate state" width="140" />
+	<img src="frontend/public/aqi_severe_man.png" alt="AirPulse AQI severe state" width="140" />
+	<img src="frontend/public/aqi_hazardous_man.png" alt="AirPulse AQI hazardous state" width="140" />
+</p>
+
 ## Project Summary
 
 AirPulse was designed to forecast air quality from station and weather data, then translate those predictions into actionable health risk information. The workflow starts with data collection, moves through feature engineering and model training, and ends with a browser-based dashboard that can be refreshed in real time.
