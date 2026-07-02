@@ -15,15 +15,11 @@ The current production flow uses 30 independently trained pollutant models acros
 ## Visual Preview
 
 <p align="center">
-	<img src="frontend/public/cityscape.png" alt="AirPulse cityscape background" width="360" />
-	<img src="frontend/public/cloud_sun.png" alt="AirPulse weather background" width="360" />
+	<img src="docs/screenshots/airpulse-dashboard-overview.jpg" alt="AirPulse dashboard overview" width="420" />
 </p>
 
 <p align="center">
-	<img src="frontend/public/aqi_good_man.png" alt="AirPulse AQI good state" width="140" />
-	<img src="frontend/public/aqi_moderate_man.png" alt="AirPulse AQI moderate state" width="140" />
-	<img src="frontend/public/aqi_severe_man.png" alt="AirPulse AQI severe state" width="140" />
-	<img src="frontend/public/aqi_hazardous_man.png" alt="AirPulse AQI hazardous state" width="140" />
+	<img src="docs/screenshots/airpulse-weather-parameters.jpg" alt="AirPulse weather parameters" width="420" />
 </p>
 
 ## Project Summary
