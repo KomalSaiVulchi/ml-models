@@ -118,7 +118,7 @@ export default function App() {
     <div className="app-container">
       {/* Header */}
       <header className="app-header">
-        <h1>Air Pulse</h1>
+        <h1>AirPulse</h1>
         <p className="subtitle">Real-time AQI monitoring & ML predictions</p>
         <div className="header-controls">
           <button className="location-badge" onClick={handleChangeLocation}>
