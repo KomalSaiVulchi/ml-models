@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "https://airpulse-backend-c69w.onrender.com/api/:path*"
+    }
+  ]
+}
